@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Frontend</title>
+
+    <style>
+    #container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, auto);
+        gap: 20px;
+      }
+
+      img{
+        width: 100%;
+      }
+    </style>
+</head>
+<body>
+    
+    <h1>Frontend</h1>
+    <div id="container"></div>
+
+</body>
+</html>
+
+<script>
+    let investorArr = JSON.parse(localStorage.getItem("investorData"));
+    // console.log(investorArr);
+
+     investorArr.forEach(function(e){
+
+      let box = document.createElement("div");
+      
+      let name = document.createElement("p");
+      name.innerText = e.name;
+
+      let img = document.createElement("img");
+      img.setAttribute("src",e.imgURL);
+      
+      var role = document.createElement("p");
+      role.innerText = e.role;
+
+      box.append(name,img,role);
+    
+      document.querySelector("#container").append(box);
+       
+     });
+
+
+</script>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Backend</title>
+</head>
+<body>
+    
+  <div id="container">
+   
+    <form id="investorForm">
+        <input type="text" placeholder="Enter Name" id="name">
+        <input type="text" placeholder="Enter Image URL" id="imageURL">
+        <input type="text" placeholder="Enter Role" id="role">
+
+        <input type="submit" value="SUBMIT">
+    </form>
+
+  </div>
+
+</body>
+</html>
+
+<script>
+
+      document.querySelector("form").addEventListener("submit",storeInLocalServer);
+
+      let investorArr = JSON.parse(localStorage.getItem("investorData")) || [];
+
+      function storeInLocalServer(){
+      event.preventDefault();
+
+      let obj = {};
+      obj.name = document.querySelector("#name").value;
+      obj.imageURL = document.querySelector("#imageURL").value;
+      obj.role = document.querySelector("#role").value;
+
+      investorArr.push(obj);
+
+      localStorage.setItem("investorData",JSON.stringify(investorArr));
+      //InvestorArr has been stored on the local server!
+      }
+
+
+
+</script>
