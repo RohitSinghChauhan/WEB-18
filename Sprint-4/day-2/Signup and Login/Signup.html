@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sign Up</title>
+    <style>
+        form input{
+            display: block;
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Sign Up</h1>
+    <form>
+        <input id="email" type="email" placeholder="Enter Email">
+        <input id="number" type="number" placeholder="Enter Your Number">
+        <input id="password" type="password" placeholder="Enter Password">
+        <input type="submit" value="SIGN UP">
+    </form>
+    
+     <span><a href="Login.html">Log In</a></span>
+
+</body>
+</html>
+
+<script>
+
+ document.querySelector("form").addEventListener("submit",storeUserData);
+
+ let formArr = JSON.parse(localStorage.getItem("userData")) || [];
+
+ function storeUserData(){
+   event.preventDefault();
+
+   let formObj = {};
+   formObj.email = document.querySelector("#email").value;
+   formObj.number = document.querySelector("#number").value;
+   formObj.password = document.querySelector("#password").value;
+   
+   formArr.push(formObj);
+   console.log(formArr);
+   localStorage.setItem("userData",JSON.stringify(formArr));
+ }
+ 
+
+</script>

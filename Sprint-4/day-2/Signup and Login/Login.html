@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Log In</title>
+    <style>
+        form input{
+            display: block;
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Log In</h1>
+    <form>
+        <input id="email1" type="email" placeholder="Enter Email">
+        <input id="number2" type="number" placeholder="Enter Your Number">
+        <input id="password3" type="password" placeholder="Enter Password">
+        <input type="submit" value="LOG IN">
+    </form>
+</body>
+</html>
+
+<script>
+
+  document.querySelector("form").addEventListener("submit",someFunc);
+
+  var userData = JSON.parse(localStorage.getItem("userData"));
+
+  function someFunc(){
+    event.preventDefault();
+
+    let email = document.querySelector("#email1").value;
+    let number = document.querySelector("#number2").value;
+    let password = document.querySelector("#password3").value;
+     
+    if(email == userData.email || number == userData.number || password == userData.password){
+        alert("Login successful");
+    }
+    else{
+        alert("Unmatched Credentials");
+    }
+    
+  }
+
+
+
+</script>
